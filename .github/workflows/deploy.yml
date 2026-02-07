@@ -1,0 +1,17 @@
+name: Deploy articles
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to Zenn
+        uses: zenn-dev/action-zenn-gh-sync@v1
