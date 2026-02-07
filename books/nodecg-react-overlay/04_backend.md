@@ -501,7 +501,7 @@ Node.jsなので、`fetch` 関数を使ってAPIを利用できます。
 今回は「どのコメントを取得するか」を指定できるように、コメントのIDを送れるようにします。
 
 ```typescript:src/nodecg/messages.d.ts
-import type { Comment } from '../schemas';
+import type { CommentData } from '../schemas';
 
 export type MessageMap = {
   // ...
