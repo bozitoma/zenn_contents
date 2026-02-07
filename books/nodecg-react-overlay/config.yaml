@@ -1,0 +1,20 @@
+title: "NodeCG 配信オーバーレイ開発入門 ~Vite + React + TypeScript テンプレートで学ぶNodeCG開発~"
+summary: |
+  ライブ配信の画面オーバーレイを開発できるフレームワーク「NodeCG」の入門書です。
+  スコアボードやタイムスケジュールなど、配信中に内容をリアルタイムに更新できるWebアプリケーションを開発できるようになります。
+
+  本書では、自分用に準備した「Vite + React + TypeScript」のNodeCG開発テンプレートを公開します。
+  面倒な初期設定はすべて済ませてあるため、すぐに開発をスタートできます。
+
+  このテンプレートを使って、NodeCGの基礎から、実践的な開発、そして運用のコツまでをハンズオン形式で解説します。
+
+  「既存のツールでは物足りない」「自分だけの配信画面を作ってみたい」という方は、ぜひ参考にしてください。
+topics: ["nodecg", "react", "typescript", "vite", "streaming"]
+published: false
+price: 0 # 無料公開
+chapters:
+  - 01_intro
+  - 02_setup
+  - 03_frontend
+  - 04_backend
+  - 05_operations
