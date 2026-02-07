@@ -8,6 +8,16 @@ title: "第5章：NodeCGの運用 〜覚えておきたい5つのポイント〜
 今回紹介するポイントを押さえておけば、大半の配信で運用ができるようになるはずです。
 ぜひ参考にしてください。
 
+-----
+
+:::message
+**本書で紹介するテンプレートのリポジトリ**
+[nodecg-template-with-vite](https://github.com/bozitoma/nodecg-template-with-vite)
+:::
+https://github.com/bozitoma/nodecg-template-with-vite/blob/main/README.md#L1-L23
+
+-----
+
 ## 1. 基本は「配信PCでローカル起動」がおすすめ
 AWSやHeroku等にデプロイして運用することも可能ですが、基本は**配信を行うPCで、ローカル環境として起動するのがおすすめ**です。
 
@@ -170,7 +180,7 @@ NodeCGを使えば、配信の要件に合わせた自由なデザインで**画
 最後までお読みいただき、ありがとうございました！
 
 :::message
-**本書で使用したテンプレートのリポジトリ**
+**本書で紹介したテンプレートのリポジトリ**
 [nodecg-template-with-vite](https://github.com/bozitoma/nodecg-template-with-vite)
 :::
 https://github.com/bozitoma/nodecg-template-with-vite/blob/main/README.md#L1-L23

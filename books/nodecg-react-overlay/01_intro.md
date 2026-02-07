@@ -132,12 +132,8 @@ Node.js（バックエンド）が使えるため、外部サービスとの連�
 
 次章では、テンプレートを使って実際に開発環境を構築して、NodeCGを動かしてみます。
 
------
-
 :::message
 **本書で紹介するテンプレートのリポジトリ**
 [nodecg-template-with-vite](https://github.com/bozitoma/nodecg-template-with-vite)
 :::
 https://github.com/bozitoma/nodecg-template-with-vite/blob/main/README.md#L1-L23
-
------

@@ -12,7 +12,7 @@ title: "第2章：環境構築とNodeCGの基本構造 〜NodeCGを起動して�
 **本書で紹介するテンプレートのリポジトリ**
 [nodecg-template-with-vite](https://github.com/bozitoma/nodecg-template-with-vite)
 :::
-https://github.com/bozitoma/nodecg-template-with-vite/blob/main/README.md
+https://github.com/bozitoma/nodecg-template-with-vite/blob/main/README.md#L1-L23
 
 -----
 
@@ -213,5 +213,11 @@ https://www.nodecg.dev/ja/docs/classes/sendMessage/
 これらの仕組みが既に用意されているのが、NodeCGというフレームワークの最大メリットです。
 
 次回は、実際にこのテンプレートを使って開発を進めていきます。
+
+:::message
+**本書で紹介したテンプレートのリポジトリ**
+[nodecg-template-with-vite](https://github.com/bozitoma/nodecg-template-with-vite)
+:::
+https://github.com/bozitoma/nodecg-template-with-vite/blob/main/README.md#L1-L23
 
 [^message-note]: 技術的にはグラフィックからメッセージを送ることも可能ですが、グラフィックは表示専用とし、操作やロジックの発火はダッシュボードに集約させるのがNodeCG開発のベストプラクティスです。そのため、本書のアーキテクチャ図では意図的に導線を省略しています。

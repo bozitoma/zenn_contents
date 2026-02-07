@@ -5,6 +5,16 @@ title: "第4章：バックエンド（Extension）の実装 〜タイマーやA
 前章では、フロントエンド（Dashboard/Graphics）でスコアボードを作りました。
 本章では、NodeCGのバックエンドの領域である **Extension（エクステンション）** を使って、ブラウザに依存しない機能や外部サービスとの連携を実装します。
 
+-----
+
+:::message
+**本書で紹介するテンプレートのリポジトリ**
+[nodecg-template-with-vite](https://github.com/bozitoma/nodecg-template-with-vite)
+:::
+https://github.com/bozitoma/nodecg-template-with-vite/blob/main/README.md#L1-L23
+
+-----
+
 ## 1. Extensionを使うメリット
 Extensionは、Node.js環境で動作します。以下のような処理に適しています。
 
@@ -917,3 +927,9 @@ NodeCGを再起動しても先程と同じようにコメントが取得でき�
 Extensionを使えば、「バックエンドならではの処理」が可能になります。色々と応用が効きますので、ぜひ活用してみてください。
 
 次章では、NodeCGで作成したアプリの運用方法について解説します。
+
+:::message
+**本書で紹介したテンプレートのリポジトリ**
+[nodecg-template-with-vite](https://github.com/bozitoma/nodecg-template-with-vite)
+:::
+https://github.com/bozitoma/nodecg-template-with-vite/blob/main/README.md#L1-L23

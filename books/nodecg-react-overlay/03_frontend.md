@@ -6,6 +6,16 @@ title: "第3章：フロントエンド(Dashboard/Graphics)の実装 〜スコ�
 本章では、NodeCGのフロントエンドの領域である**Dashboard**と**Graphics**を使って、対戦ゲームなどで使用する**スコアボード**を作成します。
 NodeCG開発の基本となる、DashboardとGraphicsを連携させる仕組みを、ReactとTypeScriptを使って実装していきます。
 
+-----
+
+:::message
+**本書で紹介するテンプレートのリポジトリ**
+[nodecg-template-with-vite](https://github.com/bozitoma/nodecg-template-with-vite)
+:::
+https://github.com/bozitoma/nodecg-template-with-vite/blob/main/README.md#L1-L23
+
+-----
+
 ## 1. 今回作るもの
 
 対戦ゲームの配信でよく見かける**スコアボード**を作成します。
@@ -1072,5 +1082,11 @@ OBS Studioの画面も更新されていれば、実装が完了です。
 
 次回はNodeCGのバックエンド処理を担うExtensionについて解説します。
 今回の実装内容だけでもアプリとしては十分機能しますが、Extensionを使うことで、ブラウザを閉じても止まらないタイマーや、外部APIとの連携など、より高度な機能実装が可能になります。さらにNodeCGの機能を活用したい方はぜひご覧ください。
+
+:::message
+**本書で紹介したテンプレートのリポジトリ**
+[nodecg-template-with-vite](https://github.com/bozitoma/nodecg-template-with-vite)
+:::
+https://github.com/bozitoma/nodecg-template-with-vite/blob/main/README.md#L1-L23
 
 [^message-note]: 技術的にはグラフィックからメッセージを送ることも可能ですが、グラフィックは表示専用とし、操作やロジックの発火はダッシュボードに集約させるのがNodeCG開発のベストプラクティスです。そのため、本書のアーキテクチャ図では意図的に導線を省略しています。
