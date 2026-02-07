@@ -42,6 +42,9 @@ export default (nodecg: NodeCG) => {
 ## 3. Message機能の解説
 DashboardからExtensionを呼び出すには、**Message** という機能を使います。
 
+### 3-1. メッセージ（Message）の仕組み
+DashboardからExtensionを呼び出すには、**Message** という機能を使います。
+
 * **Dashboard側**: `sendMessage` で命令を送る（例：「データを取得して！」）
 * **Extension側**: `listenFor` で命令を待ち受ける（例：「命令が来たからAPIを叩くよ！」）
 
@@ -49,7 +52,7 @@ https://www.nodecg.dev/ja/docs/classes/sendMessage
 
 https://www.nodecg.dev/ja/docs/classes/listenFor
 
-### 型定義による安全な通信
+### 3-2. 型定義の追加
 本テンプレートでは、このやり取りを型安全に行うために `src/nodecg/messages.d.ts` で型を定義しています。
 これを定義することで、`sendMessage` や `listenFor` の記述で型エラーがあればエディタが教えてくれるようになります。
 
@@ -450,8 +453,7 @@ import { App } from './App';
 const root = createRoot(document.getElementById('root')!);
 root.render(<App />);
 ```
-
-### 動作確認
+### 4-8. 動作確認
 
 NodeCGを再起動して動作を確認します。
 既にNodeCGを起動している場合は、`Ctnl + C` でNodeCGを停止してから、`pnpm dev` で再起動してください。
@@ -828,8 +830,7 @@ import { App } from './App';
 const root = createRoot(document.getElementById('root')!);
 root.render(<App />);
 ```
-
-### 動作確認
+### 5-7. 動作確認
 
 NodeCGを再起動して動作を確認します。
 既にNodeCGを起動している場合は、`Ctnl + C` でNodeCGを停止してから、`pnpm dev` で再起動してください。
@@ -905,13 +906,12 @@ export type BundleConfig = z.infer<typeof bundleConfigSchema>;
 +     const response = await fetch(`${apiUrl}/${id}`);
 ```
 
-
-### 動作確認
+### 6-4. 動作確認
 NodeCGを再起動しても先程と同じようにコメントが取得できるか確認してみます。問題なく動作していればOKです。
 これで、コードを書き換えなくても、`cfg/nodecg-template-with-vite.json` を書き換えてNodeCGを再起動するだけで、接続先を変更できるようになりました。
 今回はURLだけですが、APIキーやアクセストークンなどの **秘密情報や環境変数を管理する場所** としてBundle Configは有用です。
 
-## おわりに
+## 7. おわりに
 この章では、Extensionを使って**タイマー機能**と**外部データ取得（コメント取得）機能**を実装しました。
 
 Extensionを使えば、「バックエンドならではの処理」が可能になります。色々と応用が効きますので、ぜひ活用してみてください。

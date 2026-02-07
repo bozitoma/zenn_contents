@@ -36,7 +36,7 @@ https://github.com/bozitoma/nodecg-template-with-vite/blob/main/README.md
 ## 2. NodeCGの採用事例
 実際にNodeCGが使われているライブ配信の事例をいくつか紹介します。
 
-### RTA in Japan
+### 2-1. RTA in Japan
 [RTA in Japan](https://rtain.jp/)は、日本で開催されている、ゲームを最速でクリアする遊び方「リアルタイムアタック（RTA）」の大規模イベントです。
 RTAにはタイマー機能が必須です。また、複数のプレイヤーとゲームが次々と進行していくため、タイムスケジュールやプレイヤー情報の更新を柔軟に行う必要があります。
 
@@ -51,7 +51,7 @@ NodeCGを使えば、プレイヤー名、解説者名、SNSアカウント情�
 RTA in JapanのNodeCGアプリケーションはGitHubで公開されています。
 @[card](https://github.com/RTAinJapan/rtainjapan-layouts)
 
-### 若人杯（ストリートファイター6）
+### 2-2. 若人杯（ストリートファイター6）
 
 「ストリートファイター6」を用いた2名1チームで行われる団体戦トーナメントです。
 この大会では、チーム紹介や使用キャラクターの表示、現在のスコアや勝敗状況をNodeCGで管理しています。
@@ -64,7 +64,7 @@ RTA in JapanのNodeCGアプリケーションはGitHubで公開されていま�
 ![試合画面](/images/nodecg-react-overlay/01-wakoudo-game.png)
 *試合画面 - スコアや勝敗を管理（[アーカイブ 10:44:33〜](https://www.youtube.com/live/JiCNf3tt0bo?si=xhT-0uTjqAPp4YB4&t=38673)）*
 
-### VGBootCamp（日本語配信）
+### 2-3. VGBootCamp（日本語配信）
 配信クルー「[VGBootCamp](https://www.twitch.tv/vgbootcamp)」の日本語配信用に、NodeCGベースのスコアボード「**OverlayCast**」を開発しました。
 
 VGBootCampでは複数のゲームタイトルを配信するため、タイトルごとに異なるレイアウトを表示する必要があります。
@@ -85,7 +85,7 @@ NodeCGを活用することで、入力項目や表示内容をゲームに応�
 ![VGBootCamp 配信画面（スマブラDX）](/images/nodecg-react-overlay/01-vgbootcamp-battle-melee.png)
 *VGBootCamp 配信画面（スマブラDX） - キャラクターアイコンやポート情報を表示*
 
-### TSKaigi（テックカンファレンス）
+### 2-4. TSKaigi（テックカンファレンス）
 
 TypeScriptに関するあらゆるテーマを扱う国内最大級のカンファレンスです。このライブ配信基盤にもNodeCGが採用されていました（[制作者による技術解説](https://zenn.dev/ken7253/articles/tskaigi-streaming-layout)）。
 
@@ -101,18 +101,18 @@ TypeScriptに関するあらゆるテーマを扱う国内最大級のカンフ�
 
 では、あえてNodeCGで開発する利点は何か、今一度整理してみます。
 
-### 1. 独自の情報を制御したい
+### 3-1. 独自の情報を制御したい
 既存ツールでは、原則として表示できるレイアウトや項目が決まっています。
 「もっと多くのテキストを表示したい」「ライブ配信の状況に合わせて画像を切り替えたい」といった、既存ツールの枠に収まらない独自の制御を行いたい場合、NodeCGであれば実現が可能です。
 
-### 2. 運営フローに合わせた機能を作れる
+### 3-2. 運営フローに合わせた機能を作れる
 例えばRTA in Japanでは、ボランティアスタッフがオペレーションを行うため、「入力項目にミスがないか」を判定するチェックリスト機能が実装されています。
 このように、「全ての項目がOKにならないと画面更新ボタンが押せないようにする」といった、自分たちのイベント運営に特化した安全装置やロジックも組み込めます。
 
 ![チェックリスト機能](/images/nodecg-react-overlay/01-rtaij-dashboard-stream.png)
 *ダッシュボードの左下にチェックリスト機能 - 出典: [RTA in JapanのNodeCGレイアウトを動かしてみる](https://qiita.com/pasta04/items/d676d9c2fb716176f665)*
 
-### 3. 外部APIやデータベースを利用できる
+### 3-3. 外部APIやデータベースを利用できる
 Node.js（バックエンド）が使えるため、外部サービスとの連携が可能です。
 
 * Start.gg（トーナメントサイト）のAPIを利用して対戦カードを自動取得する
@@ -121,13 +121,13 @@ Node.js（バックエンド）が使えるため、外部サービスとの連�
 
 このように、手動入力を減らして自動化したり、データを加工してそのまま表示することが可能です。
 
-### 4. デザインを自由にできる
+### 3-4. デザインを自由にできる
 配信画面のデザインはもちろん、スタッフが操作する管理画面のデザインも、使いやすいように自由にカスタマイズできます。
 
 ![OverlayCast ダッシュボード（スマブラSP）](/images/nodecg-react-overlay/01-vgbootcamp-dashboard.png)
 *自作のNodeCGアプリ「OverlayCast」のダッシュボードのデザイン - VGBootCampのロゴデザインに合わせて赤と黒を基調にしたデザインにしています*
 
-## おわりに
+## 4. おわりに
 この章では、NodeCGの概要と採用事例、そして開発するメリットを紹介しました。
 
 次章では、テンプレートを使って実際に開発環境を構築して、NodeCGを動かしてみます。

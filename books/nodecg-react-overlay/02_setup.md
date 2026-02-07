@@ -43,7 +43,7 @@ https://github.com/bozitoma/nodecg-template-with-vite/blob/main/README.md
 ## 3. 環境構築の手順
 それでは、実際に環境を作っていきましょう。
 
-### 1. テンプレートをクローンする
+### 3-1. テンプレートをクローンする
 ターミナルを開き、任意のディレクトリで以下のコマンドを実行してテンプレートをクローンします。
 
 ```bash
@@ -51,14 +51,14 @@ git clone git@github.com:bozitoma/nodecg-template-with-vite.git
 cd nodecg-template-with-vite
 ```
 
-### 2. 依存関係をインストールする
+### 3-2. 依存関係をインストールする
 フォルダを移動したら、必要なライブラリをインストールします。
 
 ```bash
 pnpm install
 ```
 
-### 3. バンドル名を定義する
+### 3-3. バンドル名を定義する
 NodeCGでは、プロジェクトを識別するための「バンドル名」を定義する必要があります。
 このテンプレートでは、バンドル名を `bundleName.ts` というファイルで定義するようにしています。
 
@@ -75,7 +75,7 @@ NodeCGはバンドル名に基づいて、URLの生成やデータの同期（Re
 この値を間違えると、この後の手順で「Graphicsが表示されない」「エラーが出る」といったトラブルに繋がるため、必ず確認してください。
 :::
 
-### 4. 開発サーバーを起動する
+### 3-4. 開発サーバーを起動する
 準備が整ったら、NodeCGを起動します。
 
 ```bash
@@ -84,14 +84,14 @@ pnpm dev
 
 ターミナルに `NodeCG running on http://localhost:9090` のようなログが表示されれば起動成功です。
 
-### 5. 動作確認
+### 3-5. 動作確認
 ブラウザで `http://localhost:9090` にアクセスしてみてください。
 NodeCGのDashboard（管理画面）が表示されるはずです。
 
 ![テンプレートのDashboard画面](/images/nodecg-react-overlay/02-dashboard-template.png)
 *テンプレートのDashboard - テロップ更新とストップウォッチのサンプル機能*
 
-## 4. OBSに映してみよう
+## 4. OBS Studioに映してみよう
 次に、このグラフィックをOBS Studioに表示させてみます。
 
 1. NodeCGのDashboardを開き、「Graphics」タブから`EXAMPLE.HTML`の「COPY URL」ボタンをクリックして、URLをコピーします。
@@ -99,7 +99,7 @@ NodeCGのDashboard（管理画面）が表示されるはずです。
 ![NodeCGのGraphicsタブ](/images/nodecg-react-overlay/02-nodecg-graphics.png)
 *NodeCGのGraphicsタブでURLをコピーする*
 
-2. OBSの「ソース」欄の `+` ボタンから **「ブラウザ」** を選択。
+2. OBS Studioの「ソース」欄の `+` ボタンから **「ブラウザ」** を選択。
 
 ![ソースを追加するために+ボタンを選択](/images/nodecg-react-overlay/02-obs-add-source.png)
 *ソース欄の+ボタンをクリック*
@@ -114,22 +114,22 @@ NodeCGのDashboard（管理画面）が表示されるはずです。
     * **幅**: 1920
     * **高さ**: 1080
 
-![OBSのソース設定](/images/nodecg-react-overlay/02-obs-setting-property.png)
+![OBS Studioのソース設定](/images/nodecg-react-overlay/02-obs-setting-property.png)
 *ブラウザソースのプロパティ設定*
 
-OBSの画面上にグラフィックが表示されればOKです。
+OBS Studioの画面上にグラフィックが表示されればOKです。
 
-![OBSのグラフィック表示](/images/nodecg-react-overlay/02-obs-browser.png)
-*OBSにグラフィックが表示された状態*
+![OBS Studioのグラフィック表示](/images/nodecg-react-overlay/02-obs-browser.png)
+*OBS Studioにグラフィックが表示された状態*
 
 Dashboard上のテキストボックスを書き換えたり、ストップウォッチのボタンを押してみてください。
-OBS上の表示が**リアルタイムに更新**されれば、環境構築は完了です。
+OBS Studio上の表示が**リアルタイムに更新**されれば、環境構築は完了です。
 
 ![NodeCG Dashboardの操作](/images/nodecg-react-overlay/02-obs-dashboard-update.png)
 *Dashboardでテキスト変更やストップウォッチの開始をする*
 
-![OBSの確認](/images/nodecg-react-overlay/02-obs-browser-update.png)
-*OBS上の表示がリアルタイムに反映される*
+![OBS Studioの確認](/images/nodecg-react-overlay/02-obs-browser-update.png)
+*OBS Studio上の表示がリアルタイムに反映される*
 
 ## 5. NodeCGの仕組みを理解しよう
 NodeCGの動きを体験できました。次に、その仕組みについて簡単に解説します。
@@ -137,7 +137,7 @@ NodeCGの動きを体験できました。次に、その仕組みについて�
 
 @[card](https://www.nodecg.dev/ja/docs/concepts-and-terminology)
 
-### 構成要素とデータのやり取り
+### 5-1. 構成要素とデータのやり取り
 
 ![NodeCGアーキテクチャ図](/images/nodecg-react-overlay/02-nodecg-architecture.png)
 *NodeCGの構成要素とデータの流れ[^message-note]*
@@ -163,12 +163,12 @@ NodeCGは主に**3つの構成要素**と、それらをつなぐ**2つの通信
 - 入力値はReplicantを通じてGraphicsにリアルタイム反映
 - 複数の操作パネルを用途別に分割して配置できる
 
-#### Graphics
+#### Graphics（グラフィックス）
 **視聴者に見せる配信グラフィック**です。
 OBS Studioなどの配信ソフトでブラウザソースとして読み込ませることで配信に表示します。
 
 - HTMLとCSS（React等）で自由にデザイン可能
-- 操作UIは持たず、「表示専用」として設計するのがベストプラクティス
+- 操作UIは持たせず、「表示専用」として設計するのがベストプラクティス
 
 #### Extension（エクステンション）
 **サーバーサイドで動くバックエンド処理**です。
@@ -207,7 +207,7 @@ Messageで処理を依頼し、結果はReplicantで共有する。
 
 https://www.nodecg.dev/ja/docs/classes/sendMessage/
 
-## おわりに
+## 6. おわりに
 テンプレートの環境構築と、NodeCGの基本構造について解説しました。
 値が即座に更新されるリアルタイム同期と、ブラウザを閉じても値が消えないデータの保持という特性が、ライブ配信にはとても有用です。
 これらの仕組みが既に用意されているのが、NodeCGというフレームワークの最大メリットです。

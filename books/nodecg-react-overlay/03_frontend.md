@@ -35,7 +35,7 @@ NodeCG開発の基本となる、DashboardとGraphicsを連携させる仕組み
 3. Dashboard（操作画面）の実装
 4. Graphics（表示画面）の実装
 5. NodeCGへの登録（package.json）
-6. 動作確認 / OBSへの組み込み
+6. 動作確認 / OBS Studioへの組み込み
 
 ## 2. Zodスキーマによるデータ定義
 
@@ -43,7 +43,7 @@ NodeCG開発の基本となる、DashboardとGraphicsを連携させる仕組み
 NodeCGでは **Replicant（レプリカント）** という仕組みを使って、DashboardとGraphicsの間でデータを同期します。
 本テンプレートでは、**Zod** というライブラリを使って、Replicantのデータの型とデフォルト値を安全に管理しています。
 
-### スキーマファイルの作成
+### 2-1. スキーマファイルの作成
 `src/schemas/scoreboard.ts` を作成します。
 今回のスコアボードでは2人のプレイヤーの名前とスコアを管理するので、以下のように記述します。
 
@@ -81,7 +81,7 @@ export type Scoreboard = z.infer<typeof scoreboardSchema>;
 
 :::
 
-### エクスポートの追加
+### 2-2. エクスポートの追加
 
 `src/schemas/index.ts` にエクスポートを追加します。
 
@@ -94,7 +94,7 @@ export type { Scoreboard } from './scoreboard';
 
 データの型を作成したので、次はそれをNodeCGに反映します。
 
-### Replicant（レプリカント）の仕組み
+### 3-1. Replicant（レプリカント）の仕組み
 ![NodeCGアーキテクチャ図](/images/nodecg-react-overlay/02-nodecg-architecture.png)
 *NodeCGの構成要素とデータの流れ[^message-note]*
 
@@ -106,7 +106,7 @@ Replicantを更新すると、**即座にDashboard/Graphics/Extension間で値�
 
 https://www.nodecg.dev/ja/docs/classes/replicant/
 
-### useReplicantフック
+### 3-2. useReplicantフック
 本テンプレートでは、このReplicantをReactの `useState` と同じ感覚で扱えるようにしたカスタムフック `useReplicant` を提供しています。
 
 このフックは、**Replicantの同期された値をReactのUIに反映させるためのラッパー**です。
@@ -159,7 +159,7 @@ export const useReplicant = <T extends keyof ReplicantMap>(
 - 戻り値の第2要素で `rep.value` への代入をラップ
 :::
 
-### 型定義の追加（ReplicantMap）
+### 3-3. 型定義の追加（ReplicantMap）
 
 `useReplicant` の型を推論するために、先程スキーマで定義した型定義を`src/nodecg/replicants.d.ts` に追加します。
 この `ReplicantMap` は、Replicantの「名前」と「データの型」を紐付けるための定義です。
@@ -182,7 +182,7 @@ export type ReplicantMap = {
 本テンプレートでは、`src/browser` ディレクトリ内でDashboardとGraphicsのコードを管理しています。
 まずは、NodeCGのビルドと起動ができるところまでファイルを準備していきます。
 
-### 作業ディレクトリの作成
+### 4-1. 作業ディレクトリの作成
 今回は `scoreboard` という名前でディレクトリを作成して、その中にファイルを作成していきます。
 `src/browser/dashboard/` ディレクトリと`src/browser/graphics/` ディレクトリに、`scoreboard`ディレクトリを作成します。
 
@@ -191,7 +191,7 @@ mkdir src/browser/dashboard/scoreboard
 mkdir src/browser/graphics/scoreboard
 ```
 
-### ファイルの作成
+### 4-2. ファイルの作成
 本テンプレートでは、`src/browser/dashboard/` と`src/browser/graphics/` で作成されたディレクトリ内の`index.tsx`ファイルを読み込んでビルドします。
 ビルドファイルはそれぞれルートの`Dashboard`ディレクトリと`Graphics`ディレクトリにhtmlファイルが生成されます。ここに生成することでNodeCGがファイルを読み込めるようになります。
 ビルドが通るように、ベースとなるファイルを作成します。
@@ -219,7 +219,7 @@ export function ScoreboardGraphic() {
 }
 ```
 
-#### エントリーファイルの作成
+#### 4-3. エントリーファイルの作成
 ビルド時のエントリーファイルです。
 `createRoot` でHTML内の描画エリア（`#root`）を取得して、`root.render` で実装したコンポーネントを配置しています。
 また、ブラウザによる表示のズレを防ぐため、テンプレートに含まれる `src/browser/global.css` をここで読み込んでおきます。
@@ -242,7 +242,7 @@ const root = createRoot(document.getElementById('root')!);
 root.render(<ScoreboardGraphic />);
 ```
 
-### package.jsonのnodecgセクションを編集
+### 4-4. package.jsonのnodecgセクションを編集
 
 作成したファイルをNodeCGに認識させるため、`package.json` の `nodecg` セクションを編集します。
 `dashboardPanels`（ダッシュボード）と `graphics`（グラフィックス）の両方を設定します。
@@ -302,7 +302,7 @@ root.render(<ScoreboardGraphic />);
 - [NodeCG公式ドキュメント - Manifest (graphics)](https://www.nodecg.dev/ja/docs/manifest#graphics)
 :::
 
-### 起動確認
+### 4-5. 起動確認
 
 準備ができたら、NodeCGを起動して、両方の画面が表示されるか確認しましょう。
 
@@ -334,7 +334,7 @@ Viteで開発しているので、起動したまま編集をすると自動で�
 まずは操作画面であるDashboardから実装します。
 先ほど作った「Hello Dashboard」の状態の `src/browser/dashboard/scoreboard/App.tsx` を書き換えていきます。
 
-### Replicantの呼び出し
+### 5-1. Replicantの呼び出し
 
 `useReplicant` フックを使って `scoreboard` の Replicant を読み込みます。
 実際の運用を想定した時に、フォームの設計は **「Replicantの値」と「手元の編集用ステート」を分ける** のがおすすめです。
@@ -385,7 +385,7 @@ export function ScoreboardDashboard() {
 }
 ```
 
-### 更新ボタンの導入
+### 5-2. 更新ボタンの導入
 
 ローカルの変更をReplicantに反映する「更新」ボタンを実装します。
 
@@ -413,7 +413,7 @@ export function ScoreboardDashboard() {
 }
 ```
 
-### PlayerCardコンポーネントの導入
+### 5-3. PlayerCardコンポーネントの導入
 
 Player1とPlayer2の編集画面は共通しているので、コンポーネントで管理します。
 `src/browser/dashboard/scoreboard/PlayerCard.tsx` を作成して、以下のコードを記述してください。
@@ -559,7 +559,7 @@ export function ScoreboardDashboard() {
 }
 ```
 
-### リセット・入れ替えボタンの導入
+### 5-4. リセット・入れ替えボタンの導入
 
 便利機能として、初期状態に戻す「リセット」ボタンと、Player 1/Player 2を入れ替える「スワップ」ボタンを追加します。
 
@@ -608,7 +608,7 @@ export function ScoreboardDashboard() {
 }
 ```
 
-### スタイルの実装
+### 5-5. スタイルの実装
 
 スタイルを定義します。
 `src/browser/dashboard/scoreboard/style.css` を作成して、以下のコードを記述してください。
@@ -902,9 +902,9 @@ NodeCGのDashboard上で実際に動かして、動作を確認してみてく�
 
 ## 6. Graphicsの実装
 
-続いて、表示画面（Graphics）を実装します。
+続いて、配信画面に表示するためのGraphicsを実装します。
 
-### メインコンポーネントの実装
+### 6-1. メインコンポーネントの実装
 
 `src/browser/graphics/scoreboard/App.tsx` を更新して、Replicantの値を表示するようにします。
 Replicantの仕様上、ページ読み込み直後は必ず `undefined` が返されるため、その場合の処理も記述します。
@@ -944,15 +944,15 @@ export function ScoreboardGraphic() {
 }
 ```
 
-### スタイルの実装
+### 6-2. スタイルの実装
 
 Graphicsのスタイルを実装します。
 `src/browser/graphics/scoreboard/style.css` を作成し、以下のコードを記述してください。
 
 ```css:src/browser/graphics/scoreboard/style.css
 .scoreboard-container {
-  width: 100vw;
-  height: 100vh;
+  width: 1920px;
+  height: 1080px;
   background-color: transparent;
   
   /* 中央上部に配置 */
@@ -1026,45 +1026,47 @@ import './style.css'; // 追加
 ![Graphics 完成イメージ](/images/nodecg-react-overlay/03-graphic-complete.png)
 *Graphics 完成イメージ(背景は透過です)*
 
-## 7. 動作確認とOBSへの取り込み
+## 7. 動作確認とOBS Studioへの取り込み
 
-NodeCGの実装は完了したので、実際にOBSに読み込ませてみましょう。
+NodeCGの実装は完了したので、実際にOBS Studioに表示させてみましょう。
 
-### OBSへの設定
+1. NodeCGのDashboardを開き、「Graphics」タブから`SCOREBOARD.HTML`の「COPY URL」ボタンをクリックして、URLをコピーします。
 
-1. OBSの「ソース」欄の `+` ボタンから **「ブラウザ」** を選択。
+![DashboardのGraphicsタブからSCOREBOARD.HTMLのURLをコピー](/images/nodecg-react-overlay/03-nodecg-graphics-list.png)
+*DashboardのGraphicsタブからSCOREBOARD.HTMLのURLをコピー*
 
-![ソースを追加するために+ボタンを選択](/images/nodecg-react-overlay/02-obs-add-source.png)
+2. OBS Studioの「ソース」欄の `+` ボタンから **「ブラウザ」** を選択。
+
+![OBS Studioのソース設定](/images/nodecg-react-overlay/02-obs-add-source.png)
 *ソース欄の+ボタンをクリック*
 
-![ブラウザを選択](/images/nodecg-react-overlay/02-obs-add-browser.png)
+![OBS Studioのブラウザソースを選択](/images/nodecg-react-overlay/02-obs-add-browser.png)
 *メニューから「ブラウザ」を選択*
 
-2. 新規作成で適当な名前（デフォルトの「ブラウザ」でもOK）をつけてOKボタンを押す。
+3. 新規作成で適当な名前（デフォルトの「ブラウザ」でもOK）をつけてOKボタンを押す。
 
-3. プロパティ画面で以下を設定してOKボタンを押す：
+4. プロパティ画面で以下を設定してOKボタンを押す：
     * **URL**: `http://localhost:9090/bundles/nodecg-template-with-vite/graphics/scoreboard.html`
-        * ※NodeCGのDashboardの「Graphics」タブからURLを確認・コピーできます。
     * **幅**: 1920
     * **高さ**: 1080
 
-![OBSのソース設定](/images/nodecg-react-overlay/03-obs-setting-property.png)
+![OBS Studioのソース設定](/images/nodecg-react-overlay/03-obs-setting-property.png)
 *ブラウザソースのプロパティ設定*
 
-OBSの画面上にオーバーレイが表示されればOKです。
+OBS Studioの画面上にオーバーレイが表示されればOKです。
 
-![OBSのオーバーレイ表示](/images/nodecg-react-overlay/03-obs-browser.png)
-*OBSにオーバーレイが表示された状態(背景の透過をわかりやすくするために、背景にDashboardの画面を載せています)*
+![OBS Studioのオーバーレイ表示](/images/nodecg-react-overlay/03-obs-browser.png)
+*OBS Studioにオーバーレイが表示された状態(背景の透過をわかりやすくするために、背景にDashboardの画面を載せています)*
 
 Dashboard側で名前やスコアを更新してみてください。
-OBSの画面も更新されていれば、実装が完了です。
+OBS Studioの画面も更新されていれば、実装が完了です。
 
 ![Dashboardの更新後のオーバーレイ](/images/nodecg-react-overlay/03-obs-updated-scoreboard.png)
-*Dashboardを更新してOBSの画面も更新されていれば成功*
+*Dashboardを更新してOBS Studioの画面も更新されていれば成功*
 
-## おわりに
+## 8. おわりに
 
-これで、NodeCGを使った基本的な実装フロー（データ定義 → 入力作成 → 表示作成 → OBSへの取り込み）を一通り体験しました。
+これで、NodeCGを使った基本的な実装フロー（データ定義 → 入力作成 → 表示作成 → OBS Studioへの取り込み）を一通り体験しました。
 
 今回作成したのは単純なテキストと数値の同期だけですが、これを応用すれば画像の切り替えやアニメーションのON/OFFなども実現可能です。
 
