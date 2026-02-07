@@ -173,4 +173,4 @@ NodeCGを使えば、配信の要件に合わせた自由なデザインで**画
 **本書で使用したテンプレートのリポジトリ**
 [nodecg-template-with-vite](https://github.com/bozitoma/nodecg-template-with-vite)
 :::
-https://github.com/bozitoma/nodecg-template-with-vite/blob/main/README.md
+https://github.com/bozitoma/nodecg-template-with-vite/blob/main/README.md#L1-L23

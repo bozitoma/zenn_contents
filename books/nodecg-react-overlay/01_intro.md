@@ -16,7 +16,7 @@ NodeCGについて知りたい人、自作で配信グラフィックのアプ�
 **本書で紹介するテンプレートのリポジトリ**
 [nodecg-template-with-vite](https://github.com/bozitoma/nodecg-template-with-vite)
 :::
-https://github.com/bozitoma/nodecg-template-with-vite/blob/main/README.md
+https://github.com/bozitoma/nodecg-template-with-vite/blob/main/README.md#L1-L23
 
 -----
 
@@ -138,6 +138,6 @@ Node.js（バックエンド）が使えるため、外部サービスとの連�
 **本書で紹介するテンプレートのリポジトリ**
 [nodecg-template-with-vite](https://github.com/bozitoma/nodecg-template-with-vite)
 :::
-https://github.com/bozitoma/nodecg-template-with-vite/blob/main/README.md
+https://github.com/bozitoma/nodecg-template-with-vite/blob/main/README.md#L1-L23
 
 -----
