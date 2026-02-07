@@ -7,7 +7,7 @@ summary: |
 
   「既存のツールでは実現できない独自のグラフィックを配信に載せたい」「スタッフが使いやすい専用の管理画面を作りたい」という方は、ぜひ参考にしてください。
 topics: ["nodecg", "react", "typescript", "vite", "streaming"]
-published: false
+published: ture
 price: 0 # 無料公開
 chapters:
   - 01_intro
