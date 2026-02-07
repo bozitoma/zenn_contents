@@ -92,7 +92,7 @@ NodeCGのDashboard（管理画面）が表示されるはずです。
 *テンプレートのDashboard - テロップ更新とストップウォッチのサンプル機能*
 
 ## 4. OBSに映してみよう
-次に、このオーバーレイをOBS Studioに表示させてみます。
+次に、このグラフィックをOBS Studioに表示させてみます。
 
 1. NodeCGのDashboardを開き、「Graphics」タブから`EXAMPLE.HTML`の「COPY URL」ボタンをクリックして、URLをコピーします。
 
@@ -117,10 +117,10 @@ NodeCGのDashboard（管理画面）が表示されるはずです。
 ![OBSのソース設定](/images/nodecg-react-overlay/02-obs-setting-property.png)
 *ブラウザソースのプロパティ設定*
 
-OBSの画面上にオーバーレイが表示されればOKです。
+OBSの画面上にグラフィックが表示されればOKです。
 
-![OBSのオーバーレイ表示](/images/nodecg-react-overlay/02-obs-browser.png)
-*OBSにオーバーレイが表示された状態*
+![OBSのグラフィック表示](/images/nodecg-react-overlay/02-obs-browser.png)
+*OBSにグラフィックが表示された状態*
 
 Dashboard上のテキストボックスを書き換えたり、ストップウォッチのボタンを押してみてください。
 OBS上の表示が**リアルタイムに更新**されれば、環境構築は完了です。
@@ -146,7 +146,7 @@ NodeCGは主に**3つの構成要素**と、それらをつなぐ**2つの通信
 
 **構成要素:**
 1. **Dashboard** - スタッフが操作する管理画面
-2. **Graphics** - 視聴者に見せる配信画面
+2. **Graphics** - 視聴者に見せる配信グラフィック
 3. **Extension** - サーバーサイドで動くバックエンド
 
 **通信手段:**
@@ -163,8 +163,8 @@ NodeCGは主に**3つの構成要素**と、それらをつなぐ**2つの通信
 - 入力値はReplicantを通じてGraphicsにリアルタイム反映
 - 複数の操作パネルを用途別に分割して配置できる
 
-#### Graphics（グラフィックス）
-**視聴者に見せる配信画面**です。
+#### Graphics
+**視聴者に見せる配信グラフィック**です。
 OBS Studioなどの配信ソフトでブラウザソースとして読み込ませることで配信に表示します。
 
 - HTMLとCSS（React等）で自由にデザイン可能

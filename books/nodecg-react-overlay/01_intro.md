@@ -5,10 +5,10 @@ title: "第1章：導入とNodeCGの概要 〜NodeCGって何？〜"
 はじめまして、Webエンジニアの**ぼじ**です。
 普段は個人でゲームイベントを開催したり、配信周りの技術を触ったりしています。
 
-これまで、[NodeCG](https://www.nodecg.dev/ja/)というフレームワークを使って、**配信用のグラフィックスを制御するアプリケーション**をいくつか開発してきました。
+これまで、[NodeCG](https://www.nodecg.dev/ja/)というフレームワークを使って、**配信用のグラフィックを制御するアプリケーション**をいくつか開発してきました。
 本書では、自分用に作成した**NodeCG開発テンプレート（Vite + React + TypeScript）を公開**し、ハンズオン形式でNodeCGを体系的に学べるように解説していきます。
 
-NodeCGについて知りたい人、自作で配信グラフィックスのアプリケーションを作りたい人は、ぜひ参考にしてください。
+NodeCGについて知りたい人、自作で配信グラフィックのアプリケーションを作りたい人は、ぜひ参考にしてください。
 
 -----
 
@@ -21,13 +21,13 @@ https://github.com/bozitoma/nodecg-template-with-vite/blob/main/README.md
 -----
 
 ## 1. NodeCGとは？
-[NodeCG](https://www.nodecg.dev/ja/)は、Node.jsとブラウザをベースに、**ライブ配信用のグラフィックス（映像に重ねる動的なコンテンツ）と操作パネルの開発に特化したフレームワーク**です。
+[NodeCG](https://www.nodecg.dev/ja/)は、Node.jsとブラウザをベースに、**ライブ配信用のグラフィック（映像に重ねる動的なコンテンツ）と操作パネルの開発に特化したフレームワーク**です。
 
 
 ![NodeCG公式サイト](/images/nodecg-react-overlay/01-nodecg-official-site.png)
 *[NodeCG公式サイト](https://www.nodecg.dev/ja/)*
 
-[OBS Studio](https://obsproject.com/ja)のような配信ソフト単体では実装が難しい、オーバーレイのリアルタイムな制御を **Webアプリケーション**として開発できます。
+[OBS Studio](https://obsproject.com/ja)のような配信ソフト単体では実装が難しい、グラフィックのリアルタイムな制御を **Webアプリケーション**として開発できます。
 例えば、以下のような要素を**ブラウザ上の管理画面からリアルタイムに制御**することが可能です。
 - ⚔️ 対戦中のスコア管理
 - ⌛️ イベントのタイムスケジュールの更新

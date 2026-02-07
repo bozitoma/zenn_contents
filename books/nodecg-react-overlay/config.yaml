@@ -1,11 +1,11 @@
-title: "NodeCG 配信グラフィックス開発入門 ~Vite + React + TypeScript テンプレートで学ぶNodeCG開発~"
+title: "NodeCG 配信グラフィック開発入門 ~Vite + React + TypeScript テンプレートで学ぶNodeCG開発~"
 summary: |
-  Web技術（Node.js/ブラウザ）で、ライブ配信用のグラフィックスと操作パネルを自由に作れるフレームワーク「NodeCG」の入門書です。
+  Web技術（Node.js/ブラウザ）で、ライブ配信用のグラフィックと操作パネルを自由に作れるフレームワーク「NodeCG」の入門書です。
 
   本書では、自分用に準備した「Vite + React + TypeScript」のNodeCG開発テンプレートを公開し、ハンズオン形式でNodeCGを体系的に学べるように解説します。
   面倒な初期設定はすべて済ませてあるため、すぐに開発をスタートできます。
 
-  「既存のツールでは実現できない独自のグラフィックスを配信に載せたい」「スタッフが使いやすい専用の管理画面を作りたい」という方は、ぜひ参考にしてください。
+  「既存のツールでは実現できない独自のグラフィックを配信に載せたい」「スタッフが使いやすい専用の管理画面を作りたい」という方は、ぜひ参考にしてください。
 topics: ["nodecg", "react", "typescript", "vite", "streaming"]
 published: false
 price: 0 # 無料公開
